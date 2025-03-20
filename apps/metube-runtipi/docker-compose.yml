@@ -8,7 +8,7 @@ services:
     ports:
       - ${APP_PORT}:8081
     volumes:
-      - ${ROOT_FOLDER_HOST}/media/2tb/metube-runtipi/:/downloads
+      - /share/metube-runtipi/:/downloads
       - ${ROOT_FOLDER_HOST}/user-config/:/cookies
     environment:
       - YTDL_OPTIONS={"cookiefile":"/cookies/cookies.txt"}
