@@ -39,6 +39,7 @@ services:
         published: 2049
         target: 2049
     privileged: true
+    
     volumes:
       - type: bind
         source: /share
@@ -46,7 +47,7 @@ services:
         bind:
           create_host_path: true
       - type: bind
-        source: ${APP_DATA_DIR}/data/config
+        source: /home/altan/runtipi/app-data/nfs-runtipi
         target: /etc/exports
         bind:
           create_host_path: false
