@@ -1,0 +1,19 @@
+{
+  "$schema": "../app-info-schema.json",
+  "name": "NFS Drive",
+  "available": true,
+  "no_gui": true,
+  "port": 445,
+  "id": "nfs-runtipi",
+  "tipi_version": 8,
+  "version": "4.20.6",
+  "categories": ["network"],
+  "description": "Enables you to share stuff via NFS.",
+  "short_desc": "Allows you to share files on network.",
+  "author": "Open Source",
+  "source": "https://hub.docker.com/r/dockurr/samba",
+  "website": "https://www.samba.org",
+  "supported_architectures": ["amd64"],
+  "created_at": 1691943801422,
+  "updated_at": 1730917452000
+}

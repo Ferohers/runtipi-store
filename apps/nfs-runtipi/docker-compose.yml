@@ -1,0 +1,49 @@
+version: "3.7"
+services:
+  nfs:
+     cap_add:
+       - SYS_ADMIN
+    #   - SETPCAP
+    container_name: nfs
+    deploy:
+      resources:
+        limits:
+          cpus: '2.00'
+          memory: 512M
+      restart_policy:
+        condition: on-failure
+        delay: 10s
+        max_attempts: 3
+        window: 120s
+    environment:
+      # TZ: ${TZ}
+    hostname: nfs
+    image: woahbase/alpine-nfs:latest
+    network_mode: host
+     ports:
+    # # for nfsv4
+       - {protocol: "tcp", host_ip: "0.0.0.0", published: 111, target: 111}
+       - {protocol: "udp", host_ip: "0.0.0.0", published: 111, target: 111}
+       - {protocol: "tcp", host_ip: "0.0.0.0", published: 2049, target: 2049}
+       - {protocol: "udp", host_ip: "0.0.0.0", published: 2049, target: 2049}
+  privileged: true
+    volumes:
+      - type: bind
+        source: /share
+        target: /data
+        bind:
+          create_host_path: true
+      - type: bind
+        source: ${APP_DATA_DIR}/data/config
+        target: /etc/exports
+        bind:
+          create_host_path: false
+      - type: bind
+        source: /etc/localtime
+        target: /etc/localtime
+        read_only: true
+        bind:
+          create_host_path: false
+
+    labels:
+      runtipi.managed: true
