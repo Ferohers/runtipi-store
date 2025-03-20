@@ -1,9 +1,9 @@
 version: "3.7"
 services:
   nfs:
-     cap_add:
-       - SYS_ADMIN
-    #   - SETPCAP
+    cap_add:
+      - SYS_ADMIN
+      # - SETPCAP
     container_name: nfs
     deploy:
       resources:
@@ -20,13 +20,25 @@ services:
     hostname: nfs
     image: woahbase/alpine-nfs:latest
     network_mode: host
-     ports:
-    # # for nfsv4
-       - {protocol: "tcp", host_ip: "0.0.0.0", published: 111, target: 111}
-       - {protocol: "udp", host_ip: "0.0.0.0", published: 111, target: 111}
-       - {protocol: "tcp", host_ip: "0.0.0.0", published: 2049, target: 2049}
-       - {protocol: "udp", host_ip: "0.0.0.0", published: 2049, target: 2049}
-  privileged: true
+    ports:
+      # for nfsv4
+      - protocol: "tcp"
+        host_ip: "0.0.0.0"
+        published: 111
+        target: 111
+      - protocol: "udp"
+        host_ip: "0.0.0.0"
+        published: 111
+        target: 111
+      - protocol: "tcp"
+        host_ip: "0.0.0.0"
+        published: 2049
+        target: 2049
+      - protocol: "udp"
+        host_ip: "0.0.0.0"
+        published: 2049
+        target: 2049
+    privileged: true
     volumes:
       - type: bind
         source: /share
@@ -44,6 +56,5 @@ services:
         read_only: true
         bind:
           create_host_path: false
-
     labels:
       runtipi.managed: true
