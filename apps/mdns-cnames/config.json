@@ -1,0 +1,20 @@
+{
+  "$schema": "../app-info-schema.json",
+  "name": "mDNS Subdomains",
+  "available": true,
+  "dynamic_config": false,
+  "no_gui": true,
+  "port": 9981,
+  "id": "mdns-cnames",
+  "tipi_version": 9,
+  "version": "2.2.5",
+  "categories": ["utilities", "security"],
+  "description": "The tool communicates with the Avahi daemon via DBus to publish CNAME records..",
+  "short_desc": "This container enables avahi subdomain support",
+  "author": "Sergei G.",
+  "source": "https://github.com/grishy/go-avahi-cname",
+  "website": "https://github.com/grishy/go-avahi-cname",
+  "supported_architectures": ["arm64", "amd64"],
+  "created_at": 1691943801422,
+  "updated_at": 1736983970962
+}

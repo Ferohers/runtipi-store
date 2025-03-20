@@ -1,0 +1,42 @@
+version: "3.7"
+
+services:
+  metube-runtipi:
+    image: alexta69/metube:latest
+    container_name: metube-runtipi
+    restart: unless-stopped
+    ports:
+      - ${APP_PORT}:8081
+    volumes:
+      - ${ROOT_FOLDER_HOST}/media/2tb/metube-runtipi/:/downloads
+      - ${ROOT_FOLDER_HOST}/user-config/:/cookies
+    environment:
+      - YTDL_OPTIONS={"cookiefile":"/cookies/cookies.txt"}
+    networks:
+      - tipi_main_network
+    labels:
+      # Main
+      traefik.enable: true
+      traefik.http.middlewares.metube-runtipi-web-redirect.redirectscheme.scheme: https
+      traefik.http.services.metube-runtipi.loadbalancer.server.port: 8081
+      # Web
+      traefik.http.routers.metube-runtipi-insecure.rule: Host(`${APP_DOMAIN}`)
+      traefik.http.routers.metube-runtipi-insecure.entrypoints: web
+      traefik.http.routers.metube-runtipi-insecure.service: metube-runtipi
+      traefik.http.routers.metube-runtipi-insecure.middlewares: metube-runtipi-web-redirect
+      # Websecure
+      traefik.http.routers.metube-runtipi.rule: Host(`${APP_DOMAIN}`)
+      traefik.http.routers.metube-runtipi.entrypoints: websecure
+      traefik.http.routers.metube-runtipi.service: metube-runtipi
+      traefik.http.routers.metube-runtipi.tls.certresolver: myresolver
+      # Local domain
+      traefik.http.routers.metube-runtipi-local-insecure.rule: Host(`metube-runtipi.${LOCAL_DOMAIN}`)
+      traefik.http.routers.metube-runtipi-local-insecure.entrypoints: web
+      traefik.http.routers.metube-runtipi-local-insecure.service: metube-runtipi
+      traefik.http.routers.metube-runtipi-local-insecure.middlewares: metube-runtipi-web-redirect
+      # Local domain secure
+      traefik.http.routers.metube-runtipi-local.rule: Host(`metube-runtipi.${LOCAL_DOMAIN}`)
+      traefik.http.routers.metube-runtipi-local.entrypoints: websecure
+      traefik.http.routers.metube-runtipi-local.service: metube-runtipi
+      traefik.http.routers.metube-runtipi-local.tls: true
+      runtipi.managed: true

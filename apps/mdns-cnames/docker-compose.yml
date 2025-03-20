@@ -1,0 +1,12 @@
+services:
+  mdns-repeater:
+    image: ghcr.io/grishy/go-avahi-cname:2.2.5
+    container_name: mdns-cnames
+    restart: unless-stopped
+    network_mode: host
+    volumes:
+      - "/var/run/dbus/system_bus_socket:/var/run/dbus/system_bus_socket" # access to avahi-daemon
+    labels:
+      # Main
+      traefik.enable: false
+      runtipi.managed: true
