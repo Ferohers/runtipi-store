@@ -4,7 +4,7 @@
   "port": 3688,
   "exposable": true,
   "dynamic_config": true,
-  "id": "owntone",
+  "id": "daapd",
   "description": "Modern Music Server and Streamer compatible with Subsonic/Airsonic",
   "tipi_version": 24,
   "version": "0.55.1",
