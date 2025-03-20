@@ -11,7 +11,8 @@ services:
     ports:
       - 445:445
     volumes:
-      - /home/altan/runtipi/media:/storage
+      - /share:/storage
+      - /sharexs:/storage2
       - /home/altan/runtipi/user-config/smb.conf:/etc/samba/smb.conf
 
     labels:
