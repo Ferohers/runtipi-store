@@ -22,7 +22,7 @@
       },
       "volumes": [
         {
-          "hostPath": "/shares/windows/storage",
+          "hostPath": "/share/windows/storage",
           "containerPath": "/storage"
         }
       ],
