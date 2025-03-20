@@ -15,7 +15,7 @@ services:
         delay: 10s
         max_attempts: 3
         window: 120s
-    environment:
+  #  environment:
       # TZ: ${TZ}
     hostname: nfs
     image: woahbase/alpine-nfs:latest
