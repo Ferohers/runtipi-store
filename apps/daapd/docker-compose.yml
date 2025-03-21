@@ -2,6 +2,7 @@ version: "3.8"
 services:
   owntone:
     container_name: owntone
+    network_mode: host
     image: docker.io/owntone/owntone:latest
     ports:
       - ${APP_PORT}:3689
@@ -14,8 +15,9 @@ services:
       - ${APP_DATA_DIR}/data:/etc/owntone
       - /sharexs/Music:/srv/media:ro
       - ${APP_DATA_DIR}/cache:/var/cache/owntone
-    networks:
-      - tipi_main_network
+#    networks:
+#      - tipi_main_network
+
     labels:
       # Main
       traefik.enable: true
