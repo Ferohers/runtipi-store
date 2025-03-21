@@ -1,7 +1,7 @@
 {
   "name": "Owntone",
   "available": true,
-  "port": 3688,
+  "port": 3689,
   "exposable": true,
   "dynamic_config": true,
   "id": "daapd",
