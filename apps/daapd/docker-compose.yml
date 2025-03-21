@@ -5,6 +5,7 @@ services:
     image: docker.io/owntone/owntone:latest
     ports:
       - ${APP_PORT}:3689
+      - 3688:3688
     restart: unless-stopped
     environment:
       - UID=1000
