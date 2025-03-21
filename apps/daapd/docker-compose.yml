@@ -4,7 +4,7 @@ services:
     container_name: owntone
     image: docker.io/owntone/owntone:latest
     ports:
-      - ${APP_PORT}:3688
+      - ${APP_PORT}:3689
     restart: unless-stopped
     environment:
       - UID=1000
