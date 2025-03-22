@@ -2,7 +2,7 @@ version: "3.8"
 services:
   owntone:
     container_name: owntone
-    network_mode: host
+#    network_mode: host
     image: docker.io/owntone/owntone:latest
     ports:
       - ${APP_PORT}:3689
@@ -15,14 +15,13 @@ services:
       - ${APP_DATA_DIR}/data:/etc/owntone
       - /sharexs/Music:/srv/media:ro
       - ${APP_DATA_DIR}/cache:/var/cache/owntone
-#    networks:
-#      - tipi_main_network
-
-    labels:
+    networks:
+      - tipi_main_network
+    labels: # Use your editors search and replace feature to replace all instances of "myapp" with your app name in the traefik labels
       # Main
       traefik.enable: true
       traefik.http.middlewares.owntone-web-redirect.redirectscheme.scheme: https
-      traefik.http.services.owntone.loadbalancer.server.port: 3688
+      traefik.http.services.owntone.loadbalancer.server.port: 3689 # Should be the same as the app internal port so for this example 9443
       # Web
       traefik.http.routers.owntone-insecure.rule: Host(`${APP_DOMAIN}`)
       traefik.http.routers.owntone-insecure.entrypoints: web
@@ -43,4 +42,3 @@ services:
       traefik.http.routers.owntone-local.entrypoints: websecure
       traefik.http.routers.owntone-local.service: owntone
       traefik.http.routers.owntone-local.tls: true
-      runtipi.managed: true
