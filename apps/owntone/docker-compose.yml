@@ -15,8 +15,8 @@ services:
       - ${APP_DATA_DIR}/data:/etc/owntone
       - /sharexs/Music:/srv/media:ro
       - ${APP_DATA_DIR}/cache:/var/cache/owntone
-    networks:
-      - tipi_main_network
+  #  networks:
+  #    - tipi_main_network
     labels: # Use your editors search and replace feature to replace all instances of "myapp" with your app name in the traefik labels
       # Main
       traefik.enable: true
