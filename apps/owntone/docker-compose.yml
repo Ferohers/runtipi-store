@@ -1,0 +1,46 @@
+version: "3.8"
+services:
+  owntone:
+    container_name: owntone
+    network_mode: host
+    image: docker.io/owntone/owntone:latest
+    ports:
+      - ${APP_PORT}:3689
+#      - 3688:3688
+    restart: unless-stopped
+    environment:
+      - UID=1000
+      - GID=1000
+    volumes:
+      - ${APP_DATA_DIR}/data:/etc/owntone
+      - /sharexs/Music:/srv/media:ro
+      - ${APP_DATA_DIR}/cache:/var/cache/owntone
+#    networks:
+#      - tipi_main_network
+
+    labels:
+      # Main
+      traefik.enable: true
+      traefik.http.middlewares.owntone-web-redirect.redirectscheme.scheme: https
+      traefik.http.services.owntone.loadbalancer.server.port: 3688
+      # Web
+      traefik.http.routers.owntone-insecure.rule: Host(`${APP_DOMAIN}`)
+      traefik.http.routers.owntone-insecure.entrypoints: web
+      traefik.http.routers.owntone-insecure.service: owntone
+      traefik.http.routers.owntone-insecure.middlewares: owntone-web-redirect
+      # Websecure
+      traefik.http.routers.owntone.rule: Host(`${APP_DOMAIN}`)
+      traefik.http.routers.owntone.entrypoints: websecure
+      traefik.http.routers.owntone.service: owntone
+      traefik.http.routers.owntone.tls.certresolver: myresolver
+      # Local domain
+      traefik.http.routers.owntone-local-insecure.rule: Host(`owntone.${LOCAL_DOMAIN}`)
+      traefik.http.routers.owntone-local-insecure.entrypoints: web
+      traefik.http.routers.owntone-local-insecure.service: owntone
+      traefik.http.routers.owntone-local-insecure.middlewares: owntone-web-redirect
+      # Local domain secure
+      traefik.http.routers.owntone-local.rule: Host(`owntone.${LOCAL_DOMAIN}`)
+      traefik.http.routers.owntone-local.entrypoints: websecure
+      traefik.http.routers.owntone-local.service: owntone
+      traefik.http.routers.owntone-local.tls: true
+      runtipi.managed: true
