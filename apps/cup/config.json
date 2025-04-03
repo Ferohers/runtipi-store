@@ -9,7 +9,7 @@
   "categories": ["utilities"],
   "description": "Cup is the easiest way to check for container image updates.",
   "tipi_version": 14,
-  "version": "3.2.0",
+  "version": "3.2.2",
   "source": "https://github.com/sergi0g/cup",
   "exposable": true,
   "supported_architectures": ["arm64", "amd64"],
