@@ -1,7 +1,7 @@
 version: "3.7"
 services:
   samba:
-    image: dockurr/samba
+    image: dockurr/samba:latest
     container_name: samba
     environment:
       NAME: "Shares"
