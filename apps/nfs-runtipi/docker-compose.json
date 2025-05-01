@@ -1,0 +1,72 @@
+{
+  "services": [
+    {
+      "name": "nfs",
+      "image": "woahbase/alpine-nfs:latest",
+      "internalPort": 111,
+      "addPorts": [
+        {
+          "containerPort": 111,
+          "hostPort": 111,
+          "tcp": false,
+          "udp": true
+        },
+        {
+          "containerPort": 2049,
+          "hostPort": 2049,
+          "tcp": true,
+          "udp": false
+        },
+        {
+          "containerPort": 2049,
+          "hostPort": 2049,
+          "tcp": false,
+          "udp": true
+        }
+      ],
+      "volumes": [
+        {
+          "hostPath": "/share",
+          "containerPath": "/data",
+          "readOnly": false,
+          "shared": false,
+          "private": false
+        },
+        {
+          "hostPath": "/home/altan/runtipi/apps/nfs-runtipi/exports",
+          "containerPath": "/etc/exports",
+          "readOnly": false,
+          "shared": false,
+          "private": false
+        },
+        {
+          "hostPath": "/etc/localtime",
+          "containerPath": "/etc/localtime",
+          "readOnly": true,
+          "shared": false,
+          "private": false
+        }
+      ],
+      "networkMode": "host",
+      "hostname": "nfs",
+      "privileged": true,
+      "capAdd": [
+        "SYS_ADMIN"
+      ],
+      "deploy": {
+        "resources": {
+          "limits": {
+            "cpus": "2.00",
+            "memory": "512M"
+          }
+        },
+        "restart_policy": {
+          "condition": "on-failure",
+          "delay": "10s",
+          "max_attempts": 3,
+          "window": "120s"
+        }
+      }
+    }
+  ]
+}
