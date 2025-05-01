@@ -33,7 +33,7 @@
           "private": false
         },
         {
-          "hostPath": "/home/altan/runtipi/apps/altan-runtipi/nfs-runtipi",
+          "hostPath": "/home/altan/runtipi/apps/altan-runtipi/nfs-runtipi/exports",
           "containerPath": "/etc/exports",
           "readOnly": false,
           "shared": false,
