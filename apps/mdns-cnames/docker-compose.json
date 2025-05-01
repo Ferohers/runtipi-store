@@ -1,0 +1,19 @@
+{
+  "services": [
+    {
+      "name": "mdns-cnames",
+      "image": "ghcr.io/grishy/go-avahi-cname:2.2.5",
+      "volumes": [
+        {
+          "hostPath": "/var/run/dbus/system_bus_socket",
+          "containerPath": "/var/run/dbus/system_bus_socket",
+          "readOnly": false,
+          "shared": false,
+          "private": false
+        }
+      ],
+      "networkMode": "host",
+      "isMain": true
+    }
+  ]
+}
