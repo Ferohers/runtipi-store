@@ -26,7 +26,7 @@
           "private": false
         },
         {
-          "hostPath": "/home/altan/runtipi/apps/samba-runtipi/smb.conf",
+          "hostPath": "/home/altan/runtipi/apps/altan-runtipi/samba-runtipi/smb.conf",
           "containerPath": "/etc/samba/smb.conf",
           "readOnly": false,
           "shared": false,
