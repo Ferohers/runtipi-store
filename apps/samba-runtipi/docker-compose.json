@@ -1,0 +1,38 @@
+{
+  "services": [
+    {
+      "name": "samba",
+      "image": "dockurr/samba:latest",
+      "environment": {
+        "NAME": "Shares",
+        "USER": "altan",
+        "PASS": "altan",
+        "RW": "false"
+      },
+      "internalPort": 445,
+      "volumes": [
+        {
+          "hostPath": "/share",
+          "containerPath": "/storage",
+          "readOnly": false,
+          "shared": false,
+          "private": false
+        },
+        {
+          "hostPath": "/sharexs",
+          "containerPath": "/storage2",
+          "readOnly": false,
+          "shared": false,
+          "private": false
+        },
+        {
+          "hostPath": "/home/altan/runtipi/apps/samba-runtipi/smb.conf",
+          "containerPath": "/etc/samba/smb.conf",
+          "readOnly": false,
+          "shared": false,
+          "private": false
+        }
+      ]
+    }
+  ]
+}
