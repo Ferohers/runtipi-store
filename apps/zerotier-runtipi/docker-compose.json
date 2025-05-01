@@ -1,0 +1,25 @@
+{
+  "services": [
+    {
+      "name": "zerotier",
+      "image": "zyclonite/zerotier",
+      "volumes": [
+        {
+          "hostPath": "/var/lib/zerotier-one",
+          "containerPath": "/var/lib/zerotier-one",
+          "readOnly": false,
+          "shared": false,
+          "private": false
+        }
+      ],
+      "networkMode": "host",
+      "devices": [
+        "/dev/net/tun"
+      ],
+      "capAdd": [
+        "NET_ADMIN",
+        "SYS_ADMIN"
+      ]
+    }
+  ]
+}
