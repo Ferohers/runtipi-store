@@ -1,0 +1,38 @@
+{
+  "services": [
+    {
+      "name": "owntone",
+      "image": "docker.io/owntone/owntone:latest",
+      "environment": {
+        "UID": "1000",
+        "GID": "1000"
+      },
+      "internalPort": 3689,
+      "volumes": [
+        {
+          "hostPath": "${APP_DATA_DIR}/data",
+          "containerPath": "/etc/owntone",
+          "readOnly": false,
+          "shared": false,
+          "private": false
+        },
+        {
+          "hostPath": "/sharexs/Music",
+          "containerPath": "/srv/media",
+          "readOnly": true,
+          "shared": false,
+          "private": false
+        },
+        {
+          "hostPath": "${APP_DATA_DIR}/cache",
+          "containerPath": "/var/cache/owntone",
+          "readOnly": false,
+          "shared": false,
+          "private": false
+        }
+      ],
+      "networkMode": "host",
+      "isMain": true
+    }
+  ]
+}
