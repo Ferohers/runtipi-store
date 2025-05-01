@@ -4,6 +4,8 @@
   "available": true,
   "no_gui": true,
   "port": 445,
+  "exposable": true,
+  "dynamic_config": true,
   "id": "samba-runtipi",
   "tipi_version": 8,
   "version": "4.20.6",
