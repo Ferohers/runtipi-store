@@ -1,0 +1,29 @@
+{
+  "services": [
+    {
+      "name": "metube-runtipi",
+      "image": "alexta69/metube:latest",
+      "environment": {
+        "YTDL_OPTIONS": "{\"cookiefile\":\"/cookies/cookies.txt\"}"
+      },
+      "internalPort": 8081,
+      "volumes": [
+        {
+          "hostPath": "/share/metube-runtipi/",
+          "containerPath": "/downloads",
+          "readOnly": false,
+          "shared": false,
+          "private": false
+        },
+        {
+          "hostPath": "${ROOT_FOLDER_HOST}/user-config/",
+          "containerPath": "/cookies",
+          "readOnly": false,
+          "shared": false,
+          "private": false
+        }
+      ],
+      "isMain": true
+    }
+  ]
+}
