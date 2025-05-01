@@ -13,7 +13,7 @@ services:
     volumes:
       - /share:/storage
       - /sharexs:/storage2
-      - /home/altan/runtipi/apps/samba-runtipi/smb.conf:/etc/samba/smb.conf
+      - /home/altan/runtipi/apps/altan-runtipi/samba-runtipi/smb.conf:/etc/samba/smb.conf
 
     labels:
       runtipi.managed: true
