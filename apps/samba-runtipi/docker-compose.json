@@ -32,7 +32,8 @@
           "shared": false,
           "private": false
         }
-      ]
+      ],
+      "networkMode": "bridge"
     }
   ]
 }
