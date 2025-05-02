@@ -10,7 +10,7 @@ services:
       RW: "false"
     ports:
       - 445:445
-    network_mode: bridge
+    network_mode: host
     volumes:
       - /share:/storage
       - /sharexs:/storage2
