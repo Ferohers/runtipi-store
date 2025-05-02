@@ -3,6 +3,7 @@
   "name": "Runtipi Samba",
   "available": true,
   "no_gui": true,
+  "exposable": false,
   "port": 445,
   "dynamic_config": true,
   "id": "samba-runtipi",
