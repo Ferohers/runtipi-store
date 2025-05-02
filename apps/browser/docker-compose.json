@@ -1,0 +1,25 @@
+{
+  "services": [
+    {
+      "name": "neko",
+      "image": "ghcr.io/m1k1o/neko/firefox:latest",
+      "environment": {
+        "NEKO_DESKTOP_SCREEN": "1920x1080@30",
+        "NEKO_MEMBER_MULTIUSER_USER_PASSWORD": "babi",
+        "NEKO_MEMBER_MULTIUSER_ADMIN_PASSWORD": "yang",
+        "NEKO_WEBRTC_EPR": "52000-52100",
+        "NEKO_WEBRTC_ICELITE": 1
+      },
+      "internalPort": 8080,
+      "addPorts": [
+        {
+          "containerPort": 52000,
+          "hostPort": 52000,
+          "tcp": false,
+          "udp": true
+        }
+      ],
+      "shmSize": "4gb"
+    }
+  ]
+}

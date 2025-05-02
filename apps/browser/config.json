@@ -1,0 +1,18 @@
+{
+  "$schema": "../app-info-schema.json",
+  "name": "Browser",
+  "available": true,
+  "port": 8080,
+  "id": "browser",
+  "tipi_version": 8,
+  "version": "3.0.0",
+  "categories": ["network", "security"],
+  "description": "Welcome to Neko, a self-hosted virtual browser that runs in Docker and uses WebRTC technology. Neko is a powerful tool that allows you to run a fully-functional browser in a virtual environment, giving you the ability to access the internet securely and privately from anywhere. ",
+  "short_desc": "a self-hosted virtual browser that runs in Docker",
+  "author": "© Neko",
+  "source": "https://github.com/m1k1o/neko/tree/master",
+  "website": "https://github.com/m1k1o/neko",
+  "supported_architectures": ["amd64"],
+  "created_at": 1691943801422,
+  "updated_at": 1730917452000
+}
