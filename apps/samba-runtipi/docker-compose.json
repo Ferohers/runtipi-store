@@ -32,9 +32,7 @@
           "shared": false,
           "private": false
         }
-      ]
-#       "networkMode": "host",
-#       "isMain": true      
+      ] 
     }
   ]
 }
